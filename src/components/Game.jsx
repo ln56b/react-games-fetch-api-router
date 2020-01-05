@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
-} from 'reactstrap';
 import './Game.css';
 
 
@@ -21,7 +17,7 @@ class Game extends Component {
             <h3 className = "game-name">{game.name}</h3>
             <h4 className = "game-rating">{game.rating}</h4>
             <p className ="game-release">{game.released}</p>
-            <Button className = "button" onClick={() => this.props.deleteGame(game.id)}>Delete game</Button>
+            <button className = "button" onClick={() => this.props.deleteGame(game.id)}>Delete game</button>
           </figure>
         </div>
         )}

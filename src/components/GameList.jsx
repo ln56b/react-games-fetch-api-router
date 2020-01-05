@@ -14,7 +14,8 @@ class GameList extends Component {
     this.handleBestRatings = this.handleBestRatings.bind(this);
   }
   componentDidMount() {
-    this.fetchGames()
+    const gameId = this.props.match.params.id
+    this.fetchGames(gameId)
   }
 
   fetchGames() {
@@ -40,8 +41,14 @@ class GameList extends Component {
   }
 
   render() {
+    if (!this.state.games) {
+      return null
+    }
     return (
-      this.state.games && <Game gameInfo = {this.state.games} deleteGame = {this.handleDelete} bestGames = {this.state.bestGames} handleBestRatings = {this.handleBestRatings} />
+      
+      <div>
+        <Game gameInfo = {this.state.games} deleteGame = {this.handleDelete} bestGames = {this.state.bestGames} handleBestRatings = {this.handleBestRatings} />
+      </div>
     );
   }
 }
