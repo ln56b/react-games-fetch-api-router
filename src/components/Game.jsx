@@ -3,26 +3,27 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import './Game.css';
 
 
 class Game extends Component {
 
   render() {
     return (
-      <div>
-  <button onClick={this.props.handleBestRatings}>{this.props.bestGames? 'All Games' : 'Best Games'}</button>
+      <div className = "general-container">
+        <button className = "button" onClick={this.props.handleBestRatings}>{this.props.bestGames? 'All Games' : 'Best Games'}</button>
         {this.props.gameInfo
         .filter(game => this.props.bestGames || game.rating >= 4.5)
         .map(game =>
-        <Card>
-          <CardImg top width="30%" src = {game.background_image} alt = {game.id}/>
-          <CardBody>
-            <CardTitle>{game.name}</CardTitle>
-            <CardSubtitle>{game.rating}</CardSubtitle>
-            <CardText>{game.released}</CardText>
-            <Button onClick={() => this.props.deleteGame(game.id)}>Delete game</Button>
-          </CardBody>
-        </Card>
+        <div className = "game-container">
+          <img className = "game-image" src = {game.background_image} alt = {game.id}/>
+          <figure className = "game-info">
+            <h3 className = "game-name">{game.name}</h3>
+            <h4 className = "game-rating">{game.rating}</h4>
+            <p className ="game-release">{game.released}</p>
+            <Button className = "button" onClick={() => this.props.deleteGame(game.id)}>Delete game</Button>
+          </figure>
+        </div>
         )}
       </div>
       

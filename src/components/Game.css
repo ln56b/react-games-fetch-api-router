@@ -1,0 +1,32 @@
+.general-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+}
+
+.game-container {
+  align-items: center;
+  border: 1px solid black;
+  box-shadow: 2px 2px 2px grey;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 1rem;
+  width: 350px;
+}
+
+.game-image {
+  object-fit: cover;
+  margin: 1rem;
+  width: 90%;
+}
+
+.button {
+  background: grey;
+  border-radius: 15px;
+  color: white; 
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+
