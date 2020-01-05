@@ -3,7 +3,6 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
-import './Game.css'
 
 
 class Game extends Component {
@@ -11,7 +10,10 @@ class Game extends Component {
   render() {
     return (
       <div>
-        {this.props.gameInfo.map(game =>
+  <button onClick={this.props.handleBestRatings}>{this.props.bestGames? 'All Games' : 'Best Games'}</button>
+        {this.props.gameInfo
+        .filter(game => this.props.bestGames || game.rating >= 4.5)
+        .map(game =>
         <Card>
           <CardImg top width="30%" src = {game.background_image} alt = {game.id}/>
           <CardBody>

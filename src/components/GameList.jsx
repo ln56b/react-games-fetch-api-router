@@ -7,9 +7,11 @@ class GameList extends Component {
     super(props);
     this.state = { 
       games : '',
+      bestGames: false
     };
     this.fetchGames = this.fetchGames.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleBestRatings = this.handleBestRatings.bind(this);
   }
   componentDidMount() {
     this.fetchGames()
@@ -29,12 +31,17 @@ class GameList extends Component {
   handleDelete(id) {
     const deleteGame = this.state.games.filter(game => game.id !== id);
     this.setState({games: deleteGame})
+  }
 
+  handleBestRatings() {
+    this.setState({
+      bestGames : !this.state.bestGames 
+    })
   }
 
   render() {
     return (
-      this.state.games && <Game gameInfo = {this.state.games} deleteGame={this.handleDelete} />
+      this.state.games && <Game gameInfo = {this.state.games} deleteGame = {this.handleDelete} bestGames = {this.state.bestGames} handleBestRatings = {this.handleBestRatings} />
     );
   }
 }
