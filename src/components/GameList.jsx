@@ -6,15 +6,16 @@ class GameList extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      games : ''
+      games : '',
     };
-    this.fetchGames = this.fetchGames.bind(this)
+    this.fetchGames = this.fetchGames.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
-  componentDidMount = () => {
+  componentDidMount() {
     this.fetchGames()
   }
 
-  fetchGames = () => {
+  fetchGames() {
     const url = "https://wild-games.herokuapp.com/api/v1"
     axios
     .get(url)
@@ -25,13 +26,15 @@ class GameList extends Component {
       }))
   }
 
-  onDelete = (e) => {
-    
+  handleDelete(id) {
+    const deleteGame = this.state.games.filter(game => game.id !== id);
+    this.setState({games: deleteGame})
+
   }
 
   render() {
     return (
-      this.state.games && <Game gameInfo = {this.state.games} />
+      this.state.games && <Game gameInfo = {this.state.games} deleteGame={this.handleDelete} />
     );
   }
 }
